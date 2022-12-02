@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Book Galore </title>
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="https://kit.fontawesome.com/cc9cc1a515.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <section class = "section-1">
+            
+        <div class="header-1">
+            <a href="28-10-22.html" class="logo"> <i class="fas fa-book"></i> Galore </a>
+
+            <form action="" class="search-form">
+                <input type="search" name="" placeholder="search here..." id="search-box">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+
+        <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-user"></a>
+        </div>
+        </div>
+        <nav class = "navbar">
+            <a class = "navbar-link" href = "28-10-22.html"></a>
+            <a class = "navbar-link" href = "#featured" ></a>
+            <a class = "navbar-link" href = "27-10-22.html" ></a>
+            <a class = "navbar-link" href = "#aboutsection" ></a>
+            <a class = "navbar-link" href = "#contactsection" ></a>
+        </nav>
+
+    </section>
+
+    <div id="main">
+        
+    </div>
+    <header>
+        <a  href="product.html" ><img src="/image/1.1.jpeg" height="300px" width="200px"  id="img12"></a>
+    </header>
+    <section></section>
+
+    <div id="home3">
+        <header></header>
+        <header class="header1"></header>    
+    </div>
+
+    
+    <header id="featured">
+    </header>
+
+    <section class="r"></section>
+
+    <section id="newsletter">
+
+        <form action="" id="forms">
+            <input type="email" name="" placeholder="enter your email" id="" class="box">
+            <input type="submit" value="subscribe" onclick="alert('You have been Subscribed');" class="btn">
+        </form>
+    
+    </section>
+
+
+    <div id="aboutsection">
+        <a class="atu" href="#"></a>
+    </div>
+
+
+    <div id="contactsection">
+        <a class="ctu" href="#"></a>
+    </div>
+    
+    <center><hr size="3.5" width="75%" color="black">  </center>
+
+
+    <div id="footer">
+
+    </div>
+
+
+    <script>
+        async function loadBMUPage() {
+            let request = new Request("/json/bmu1.json")
+            let response = await fetch(request)
+            let json_obj = await response.json()
+            loadNavBar(json_obj)
+            loadImage(json_obj)
+            // loadBMUImage(json_obj)
+            loadtitle(json_obj)
+            loadGurgaon(json_obj)
+            loadImage1(json_obj)
+            loadImage2(json_obj)
+            loadImage3(json_obj)
+            // loadDeptInfo(json_obj)
+
+
+            loadletter(json_obj)
+            loadau(json_obj)
+            loadcu(json_obj)
+            loadDeptInfo(json_obj)
+        }
+
+        let nav = document.getElementById("nav-name")
+        let nav_list = document.getElementById("nav-content")
+
+
+        function loadNavBar(P_json_obj)
+        {
+            
+            let s1 = document.querySelector(".section-1")
+            let nav = P_json_obj['av']
+            
+            let navbar = document.querySelector(".navbar")
+            navbar.style.background = "#27ae60";
+
+            for(let i of nav)
+            {
+                let navbar_link = document.querySelector(".navbar-link")
+                navbar_link.style.fontSize = "25px";
+                navbar_link.style.display = "inline-block";
+                navbar_link.style.margin = "6px 110px";
+                // navbar_link.style.margin ="6px 15px";
+                navbar_link.style.color = "#fff";
+                navbar_link.style.height ="36px";
+                navbar_link.textContent = i.link
+                navbar.appendChild(navbar_link)
+                s1.appendChild(navbar)
+            }
+        }
+
+        var els = document.getElementsByTagName('a');
+        for (var el = 0; el < els.length; el++) {
+        els[el].style["text-decoration"] = "none";
+        }
+
+        //------------------------------------------ Main ------------------------------------------------------//
+        let div = document.getElementById("main")
+
+        function loadImage(bmu_json_obj) {
+    let h2 = document.createElement("h1")
+    h2.textContent = bmu_json_obj['main_head']
+    h2.style.fontSize="50px";
+    // h2.style.position="relative";
+    h2.style.color="#FFFFFF";
+    // h2.style.lineHeight="180px";
+
+    // h2.style.right="500px";
+    h2.style.fontFamily="Nova Flat";
+    h2.style.textShadow=" 0px 4px 4px rgb(255, 0, 0), 0px 4px 4px rgb(255, 0, 0), 0px 4px 4px rgb(255, 0, 0), 0px 4px 4px rgb(255, 0, 0), 0px 4px 4px rgb(255, 0, 0), 0px 4px 4px rgb(255, 0, 0)";
+    h2.style.textTransform="uppercase";            
+    div.appendChild(h2)     
+
+
+    let h12 = document.createElement("h2")
+    h12.textContent = bmu_json_obj['main_content1']
+    h12.style.fontSize="30px";
+    // h12.style.position="relative";
+    // h12.style.bottom="1700px";
+    // h12.style.right="360px";
+    h12.style.color="#EBE8F7";
+    h12.style.fontFamily="Open Sans";
+    h12.style.textShadow="0px 4px 4px rgba(255, 0, 0, 0.766)";
+            
+    div.appendChild(h12)
+
+    let h13 =  document.createElement("h2")
+    h13.textContent=bmu_json_obj['main_content2']
+    h13.style.fontSize="30px";
+    h13.style.color="#EBE8F7";
+    h13.style.fontFamily="Open Sans";
+    h13.style.textShadow="0px 4px 4px rgba(255, 0, 0, 0.766)";
+     h13.style.margin="-10px 110px 10px";  
+    div.appendChild(h13)
+
+
+    const button = document.createElement('button')
+    button.innerText = bmu_json_obj['main_post']
+    button.id = 'mainButton'
+
+    button.addEventListener('click', () => {
+        alert('Oh, you clicked me!')
+    })
+    div.appendChild(button)
+}
+
+
+let div1 = document.getElementById("featured")
+    function loadtitle(l_json_obj) {
+    let h4 = document.createElement("h1")
+    h4.textContent = l_json_obj['fs'] 
+    h4.style.margin = "40px 0 0px 680px";       
+    div1.appendChild(h4)
+}
+
+function loadGurgaon(json_obj){
+
+    
+let s1=document.querySelector(".r")
+let x= json_obj['items'] 
+
+     let box2=document.createElement("div")
+     box2.className="box2"
+for (let i of x)
+{
+
+let box6= document.createElement("div")
+box6.className="box6"
+let a= document.createElement("a")
+
+let image=document.createElement("img")
+image.src=i.image
+image.className="room-image"
+a.appendChild(image)
+let hello=document.createElement("ul")
+let b=document.createElement("h3")
+let c=document.createElement("h4")
+let d=document.createElement("h5")
+let e=document.createElement("button")
+b.innerHTML=i.title
+c.innerHTML=i.rate
+d.innerHTML=i.rate1
+e.innerHTML=i.button
+
+hello.appendChild(b)
+hello.appendChild(c)
+hello.appendChild(d)
+hello.appendChild(e)
+
+box6.appendChild(a)
+box6.appendChild(hello)
+ box2.appendChild(box6)
+s1.appendChild(box2)
+ // b.appendChild(box)
+}
+  }
+
+
+
+
+let div4 = document.getElementById("home3")
+let header = document.querySelector("header")
+
+function loadImage0(bmu_json_obj)
+{
+    let img = document.createElement("img")
+    img.src =  bmu_json_obj['img1']
+    header.appendChild(img)
+    div4.appendChild(header)
+    img.style.width="200px";
+    img.style.height="300px";
+    // img.style.left="0px";
+    img.style,margin="80px 100px 0 10px";
+}
+function loadImage1(bmu_json_obj)
+{
+    let img1 = document.createElement("img")
+    img1.src =  bmu_json_obj['img2']
+    header.appendChild(img1)
+    div4.appendChild(header)
+    img1.style.width="200px";
+    img1.style.margin="80px 10px 0 20px";
+    img1.style.height="300px";
+}
+function loadImage2(bmu_json_obj)
+{
+    let img2 = document.createElement("img")
+    img2.src =  bmu_json_obj['img3']
+    header.appendChild(img2)
+    img2.style.width="200px";
+    img2.style.height="300px";
+    div4.appendChild(header)
+    img2.style.margin="80px 10px 0 10px";
+}
+let header1 = document.querySelector(".header1")
+function loadImage3(bmu_json_obj)
+{
+    let stand = document.createElement("img")
+    stand.src =  bmu_json_obj['stand']
+    header1.appendChild(stand)
+    div4.appendChild(header1)
+    stand.style.width="800px";
+    stand.style.height="223px";
+    stand.style.margin="-10px 0px 0 350px";
+}
+function loadDeptInfo(bmu_json_obj)
+{
+
+    let div = document.getElementById("footer")
+    let depts1 = bmu_json_obj['depts1']
+    
+    for(let dept of depts1)
+    {
+        let article = document.createElement("article")
+       
+        let ul = document.createElement("ul")
+        let elects = dept.electives
+
+        for(let elect of elects)
+        {
+            let li = document.createElement("li")
+            li.textContent= elect
+            ul.appendChild(li)
+        }
+        
+        article.appendChild(ul)
+        div.appendChild(article)
+    }
+}
+
+
+
+
+
+
+let section = document.getElementById("newsletter")
+let forms =document.getElementById("forms")
+    function loadletter(l_json_obj) {
+    let h4 = document.createElement("h1")
+    h4.textContent = l_json_obj['letter_head']        
+    forms.appendChild(h4)  
+    section.appendChild(forms)
+      
+    h4.style.margin="-150px 60px 0 1100px";
+    h4.style.color="#fff";
+    h4.style.fontFamily="Inter";
+}
+
+
+let div2 = document.getElementById("aboutsection")
+    function loadau(l_json_obj) {
+
+    let h4 = document.createElement("h1")
+    h4.textContent = l_json_obj['au']          
+    div2.appendChild(h4)
+    h4.style.fontSize="40px";
+    h4.style.textAlign="center";
+    h4.style.margin="0px 0";
+
+    let h14 = document.createElement("h2")
+    h14.textContent = l_json_obj['au_head']          
+    div2.appendChild(h14)
+    h14.style.margin="20px 0 20px 100px";
+    h14.style.fontSize="30px";
+
+    let h24 = document.createElement("h4")
+    h24.textContent = l_json_obj['au_h1']          
+    div2.appendChild(h24)
+    h24.style.fontSize="16px";
+    h24.style.margin="15px 0 0 100px";
+    h24.style.fontFamily="'Poppins', sans-serif";
+    h24.style.fontSize
+
+    let h34 = document.createElement("h4")
+    h34.textContent = l_json_obj['au_h2']          
+    div2.appendChild(h34)
+    h34.style.fontSize="16px";
+    h34.style.margin="5px 0 40px 100px";
+    h34.style.fontFamily="'Poppins', sans-serif";
+
+    let atu = document.querySelector(".atu")
+    atu.textContent = l_json_obj['au_post']
+    div2.appendChild(atu)
+    atu.style.margin="700px";
+}
+
+let div3 = document.getElementById("contactsection")
+    function loadcu(l_json_obj) {
+
+    let h4 = document.createElement("h1")
+    h4.textContent = l_json_obj['cu']          
+    div3.appendChild(h4)
+    h4.style.fontSize="40px";
+    h4.style.textAlign="center";
+    h4.style.margin="20px 0 45px";
+
+    let h24 = document.createElement("h4")
+    h24.textContent = l_json_obj['cu_h1']          
+    div3.appendChild(h24)
+    h24.style.fontSize="14px";
+    h24.style.margin="15px 0 0 100px";
+    h24.style.fontFamily="'Poppins', sans-serif";
+    h24.style.fontSize
+
+    let h34 = document.createElement("h4")
+    h34.textContent = l_json_obj['cu_h2']          
+    div3.appendChild(h34)
+    h34.style.fontSize="15px";
+    h34.style.margin="5px 0 40px 100px";
+    h34.style.fontFamily="'Poppins', sans-serif";
+
+    let ctu = document.querySelector(".ctu")
+    ctu.textContent = l_json_obj['cu_post']
+    div3.appendChild(ctu)
+    ctu.style.margin="700px";
+}
+
+
+ // <!-- ---------------Footer Section------------------------------- -->
+        
+        
+ function loadDeptInfo(bmu_json_obj)
+        {
+
+            let div = document.getElementById("footer")
+            let depts = bmu_json_obj['depts']
+            // section.body.style.position = "absolute";
+            
+            for(let dept of depts)
+            {
+                let article = document.createElement("article")
+               
+                let h1 = document.createElement("h2")
+                h1.textContent= dept.type
+                article.appendChild(h1)
+                h1.style.textAlign="center";
+                h1.style.fontSize="27px";
+               
+                let ul = document.createElement("ul")
+                let elects = dept.electives
+
+                for(let elect of elects)
+                {
+                    let li = document.createElement("li")
+                    li.textContent= elect
+                    ul.appendChild(li)
+                }
+                
+                article.appendChild(ul)
+                div.appendChild(article)
+ 
+            }
+        
+        }
+
+// let div4 = document.querySelector("home3")
+
+// function loadBMUImage(bmu_json_obj)
+// {
+//     let img = document.createElement("img")
+//     img.src =  bmu_json_obj['books1']
+//     // img.style.height="660px";
+//     // img.style.backgroundSize="cover";
+//     // img.style.backgroundPosition="center";
+//     // img.style.width="99%";
+//     // img.style.position = "absolute";
+//     // img.style.bottom="20px";
+//     div4.appendChild(img)
+// }
+loadBMUPage()
+    </script>
+</body>
+</html>

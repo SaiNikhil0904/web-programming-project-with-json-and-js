@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Book Galore </title>
+    <link rel="stylesheet" href="/css/home1.css">
+    <script src="https://kit.fontawesome.com/cc9cc1a515.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+
+    <section class = "section-1">
+            
+        <div class="header-1">
+            <a href="28-10-22.html" class="logo"> <i class="fas fa-book"></i> Galore </a>
+
+            <form action="" class="search-form">
+                <input type="search" name="" placeholder="search here..." id="search-box">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+
+        <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-user"></a>
+        </div>
+        </div>
+        <nav class = "navbar">
+            <a class = "navbar-link" href = "28-10-22.html"></a>
+            <a class = "navbar-link" href = "28-10-22.html" ></a>
+            <a class = "navbar-link" href = "#arrivals" ></a>
+            <a class = "navbar-link" href = "#aboutsection" ></a>
+            <a class = "navbar-link" href = "#contactsection" ></a>
+        </nav>
+
+    </section>
+    
+
+    <div id="main">
+        
+    </div>
+<header id="arrivals">
+
+</header>
+<section class="r">
+
+</section>
+    <center><hr size="3.5" width="75%" color="black">  </center>
+
+
+    <div id="footer">
+
+    </div>
+
+
+
+    <script>
+        async function loadBMUPage(){
+            let request = new Request("/json/bmu.json")
+            let response = await fetch(request)
+            let json_obj = await response.json()
+            
+            loadNavBar(json_obj)
+            loadImage(json_obj)
+            loadtitle(json_obj)
+            loadGurgaon(json_obj)
+            loadGurgaon1(json_obj)
+            loadDeptInfo(json_obj)
+        }
+
+
+        let nav = document.getElementById("nav-name")
+        let nav_list = document.getElementById("nav-content")
+
+
+        function loadNavBar(P_json_obj)
+        {
+            
+            let s1 = document.querySelector(".section-1")
+            let nav = P_json_obj['av']
+            
+            let navbar = document.querySelector(".navbar")
+            navbar.style.background = "#27ae60";
+
+            for(let i of nav)
+            {
+                let navbar_link = document.querySelector(".navbar-link")
+                navbar_link.style.fontSize = "25px";
+                navbar_link.style.display = "inline-block";
+                navbar_link.style.margin = "6px 110px";
+                // navbar_link.style.margin ="6px 15px";
+                navbar_link.style.color = "#fff";
+                navbar_link.style.height ="36px";
+                navbar_link.textContent = i.link
+                navbar.appendChild(navbar_link)
+                s1.appendChild(navbar)
+            }
+        }
+
+        var els = document.getElementsByTagName('a');
+        for (var el = 0; el < els.length; el++) {
+        els[el].style["text-decoration"] = "none";
+        }
+
+
+        
+
+        //------------------------------------------ Main ------------------------------------------------------//
+        let div = document.getElementById("main")
+
+        function loadImage(bmu_json_obj) {
+    let h2 = document.createElement("h1")
+    h2.textContent = bmu_json_obj['main_head']
+    h2.style.fontSize="50px";
+    h2.style.fontStyle="normal";
+    h2.style.fontWeight="350px";
+    h2.style.fontFamily="Nova Flat";
+    h2.style.textShadow="0px 4px 4px rgb(187, 152, 152)";
+    h2.style.textTransform="uppercase";        
+    h2.style.color="#000000";  
+    div.appendChild(h2)     
+
+
+
+    let h21 = document.createElement("h3")
+    h21.textContent = bmu_json_obj['main_head1']
+    h21.style.fontSize="45px";
+    // h2.style.fontStyle="normal";
+    // h2.style.fontWeight="350px";
+    h21.style.margin="-80px 110px";
+    h21.style.fontFamily="'Rock Salt', cursive";
+    // h2.style.textShadow="0px 4px 4px rgb(187, 152, 152)";
+    // h21.style.textTransform="uppercase";        
+    h21.style.color="#000000";  
+
+    div.appendChild(h21)    
+
+
+
+    let h12 = document.createElement("h2")
+    h12.textContent = bmu_json_obj['main_content1']
+    h12.style.fontSize="25px";
+    h12.fontStyle="normal";
+    h12.fontWeight="400";
+    h12.style.color="#000000";
+    h12.style.fontFamily="'Gentium Book Basic', serif";
+    h12.style.margin="100px 110px 10px";  
+    div.appendChild(h12)
+
+
+
+
+    let h13 =  document.createElement("h2")
+    h13.textContent=bmu_json_obj['main_content2']
+    h13.style.fontSize="25px";
+    h13.fontStyle="normal";
+    h13.fontWeight="400";
+    h13.style.color="#000000";
+    h13.style.fontFamily="'Gentium Book Basic', serif";
+    h13.style.margin="15px 110px 30px";  
+    div.appendChild(h13)
+
+
+    const button = document.createElement('button')
+    button.innerText = bmu_json_obj['main_post']
+    button.id = 'mainButton'
+
+    button.addEventListener('click', () => {
+        alert('Oh, you clicked me!')
+    })
+    div.appendChild(button)
+
+}
+
+let div1 = document.getElementById("arrivals")
+    function loadtitle(l_json_obj) {
+    let h4 = document.createElement("h1")
+    h4.textContent = l_json_obj['as'] 
+    h4.style.margin = "20px 0 20px 680px";       
+    div1.appendChild(h4)
+}
+
+
+function loadGurgaon(json_obj){
+
+    
+let s1=document.querySelector(".r")
+let x= json_obj['items'] 
+
+     let box2=document.createElement("div")
+     box2.className="box2"
+for (let i of x)
+{
+
+let box= document.createElement("div")
+box.className="box"
+
+let image=document.createElement("img")
+image.src=i.image
+image.className="room-image"
+
+let hello=document.createElement("ul")
+let b=document.createElement("h3")
+let c=document.createElement("h4")
+let d=document.createElement("h5")
+b.innerHTML=i.title
+c.innerHTML=i.rate
+d.innerHTML=i.rate1
+
+hello.appendChild(b)
+hello.appendChild(c)
+hello.appendChild(d)
+
+
+box.appendChild(image)
+box.appendChild(hello)
+ box2.appendChild(box)
+s1.appendChild(box2)
+
+}
+  }
+
+
+  function loadGurgaon1(json_obj){
+
+    
+let s1=document.querySelector(".r")
+let x= json_obj['items1'] 
+
+     let box2=document.createElement("div")
+     box2.className="box2"
+for (let i of x)
+{
+
+let box= document.createElement("div")
+box.className="box"
+
+let image=document.createElement("img")
+image.src=i.image
+image.className="room-image"
+
+let hello=document.createElement("ul")
+let b=document.createElement("h3")
+let c=document.createElement("h4")
+let d=document.createElement("h5")
+b.innerHTML=i.title
+c.innerHTML=i.rate
+d.innerHTML=i.rate1
+
+hello.appendChild(b)
+hello.appendChild(c)
+hello.appendChild(d)
+
+
+box.appendChild(image)
+box.appendChild(hello)
+ box2.appendChild(box)
+s1.appendChild(box2)
+
+}
+  }
+
+
+
+
+
+// <!-- ---------------Footer Section------------------------------- -->
+        
+        
+function loadDeptInfo(bmu_json_obj)
+        {
+
+            let div = document.getElementById("footer")
+            let depts = bmu_json_obj['depts']
+            // section.body.style.position = "absolute";
+            
+            for(let dept of depts)
+            {
+                let article = document.createElement("article")
+               
+                let h1 = document.createElement("h2")
+                h1.textContent= dept.type
+                article.appendChild(h1)
+                h1.style.textAlign="center";
+                h1.style.fontSize="26px";
+               
+                let ul = document.createElement("ul")
+                let elects = dept.electives
+
+                for(let elect of elects)
+                {
+                    let li = document.createElement("li")
+                    li.textContent= elect
+                    ul.appendChild(li)
+                }
+                
+                article.appendChild(ul)
+                div.appendChild(article)
+ 
+            }
+        
+        }
+
+
+   loadBMUPage()
+    </script>
+</body>
+</html>
