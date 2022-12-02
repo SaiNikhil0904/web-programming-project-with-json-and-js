@@ -5,7 +5,7 @@
 
 
 
-For my Web Programming Project. I have Created a Online Book Store named as "Book Galore".
+For my Web Programming Project. I had Created a Online Book Store named as "Book Galore".
 
 
 The website where we can purchase the books.
