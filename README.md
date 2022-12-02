@@ -8,7 +8,7 @@
 For my Web Programming Project. I have Created a Online Book Store named as "Galore".
 
 
-The website where we can order the books.
+The website where we can purchase the books.
 
 
 In this file, I've developed a website in json & js which is replica of my first evaluation project. 
