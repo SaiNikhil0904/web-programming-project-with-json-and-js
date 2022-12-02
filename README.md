@@ -1,7 +1,7 @@
 # web-programming-project-with-json-and-js
 
 
-                    This is my third semester project. This is the file after second evaluation
+                    This is my third semester project. This is the file after second evaluation.
 
 
 
